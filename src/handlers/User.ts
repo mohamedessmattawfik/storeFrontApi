@@ -1,19 +1,19 @@
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
-import { User, shopUser } from "../models/User";
+import { User, ShopUser } from "../models/User";
 
 dotenv.config();
-const shopUsers = new shopUser();
+const ShopUsers = new ShopUser();
 
 export const create = async (req: Request, res: Response): Promise<void> => {
   const u: User = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     password: req.body.password,
   };
   try {
-    const user = await shopUsers.create(u);
+    const user = await ShopUsers.create(u);
     var token = jwt.sign(
       {
         user: user,
@@ -32,7 +32,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
 export const index = async (req: Request, res: Response): Promise<void> => {
   try {
-    const users = await shopUsers.index();
+    const users = await ShopUsers.index();
     res.status(200);
     res.json(users);
   } catch (err) {
@@ -44,7 +44,7 @@ export const index = async (req: Request, res: Response): Promise<void> => {
 export const show = async (req: Request, res: Response): Promise<void> => {
   try {
     const id = req.params.id;
-    const user = await shopUsers.show(id);
+    const user = await ShopUsers.show(id);
     res.status(202);
     res.json(user);
   } catch (err) {
