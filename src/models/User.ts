@@ -9,12 +9,12 @@ const pepper = process.env.BCRYPT_PASSWORD;
 
 export type User = {
   id?: string;
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   password: string;
 };
 
-export class shopUser {
+export class ShopUser {
   async index(): Promise<User[]> {
     try {
       const conn = await client.connect();
@@ -34,7 +34,7 @@ export class shopUser {
       const sql =
         "INSERT INTO users (firstName, lastName, password) VALUES ($1, $2, $3) RETURNING *";
       const hash = bcrypt.hashSync(u.password + pepper, parseInt(saltRounds));
-      const res = await conn.query(sql, [u.firstName, u.lastName, hash]);
+      const res = await conn.query(sql, [u.firstname, u.lastname, hash]);
       conn.release();
       const user = res.rows[0];
       return user;
