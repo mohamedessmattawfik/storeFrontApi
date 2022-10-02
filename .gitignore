@@ -3,3 +3,5 @@ build
 dist
 .env
 database.json
+yarn.lock
+yarn-error.log
