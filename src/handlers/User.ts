@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import { User, ShopUser } from "../models/User";
 
 dotenv.config();
-const ShopUsers = new ShopUser();
+const shopUsers = new ShopUser();
 
 export const create = async (req: Request, res: Response): Promise<void> => {
   const u: User = {
@@ -13,7 +13,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
     password: req.body.password,
   };
   try {
-    const user = await ShopUsers.create(u);
+    const user = await shopUsers.create(u);
     var token = jwt.sign(
       {
         user: user,
@@ -32,7 +32,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
 export const index = async (req: Request, res: Response): Promise<void> => {
   try {
-    const users = await ShopUsers.index();
+    const users = await shopUsers.index();
     res.status(200);
     res.json(users);
   } catch (err) {
@@ -44,9 +44,24 @@ export const index = async (req: Request, res: Response): Promise<void> => {
 export const show = async (req: Request, res: Response): Promise<void> => {
   try {
     const id = req.params.id;
-    const user = await ShopUsers.show(id);
+    const user = await shopUsers.show(id);
     res.status(202);
     res.json(user);
+  } catch (err) {
+    res.status(400);
+    res.json(err);
+  }
+};
+
+export const userOrders = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const userId = req.params.id;
+  try {
+    const orders = await shopUsers.userOrders(userId);
+    res.status(200);
+    res.json(orders);
   } catch (err) {
     res.status(400);
     res.json(err);
