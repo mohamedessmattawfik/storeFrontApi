@@ -1,6 +1,5 @@
-import { User, ShopUser } from "../models/User";
+import { ShopUser } from "../models/User";
 import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 dotenv.config();
