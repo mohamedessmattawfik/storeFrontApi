@@ -14,6 +14,18 @@ export const index = async (_req: Request, res: Response): Promise<void> => {
   }
 };
 
+export const create = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const order: Order = req.body;
+    const result = await shoppingCart.create(order);
+    res.status(201);
+    res.json(result);
+  } catch (err) {
+    res.status(400);
+    res.json(err);
+  }
+};
+
 export const show = async (req: Request, res: Response): Promise<void> => {
   const id = req.params.id;
   try {

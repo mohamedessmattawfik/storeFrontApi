@@ -34,6 +34,19 @@ export class Cart {
     }
   }
 
+  async create(o: Order): Promise<Order> {
+    try {
+      const sql =
+        "INSERT INTO orders (user_id, status) VALUES ($1, $2) RETURNING *";
+      const conn = await client.connect();
+      const result = await conn.query(sql, [o.user_id, o.status]);
+      const order = result.rows[0];
+      return order;
+    } catch (err) {
+      throw new Error(`Something Went Wrong ${err}`);
+    }
+  }
+
   async addProduct(
     productId: string,
     orderId: string,
