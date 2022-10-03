@@ -4,9 +4,9 @@ import auth from "../../middlewares/auth";
 
 const orderRoutes = Router();
 
-orderRoutes.post("/", create);
-orderRoutes.get("/", index);
-orderRoutes.get("/:id", show);
-orderRoutes.get("/:id/products", orderProducts);
+orderRoutes.post("/", auth, create);
+orderRoutes.get("/", auth, index);
+orderRoutes.get("/:id", auth, show);
+orderRoutes.get("/:id/products", auth, orderProducts);
 
 export default orderRoutes;
