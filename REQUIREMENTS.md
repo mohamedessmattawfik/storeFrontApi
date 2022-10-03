@@ -74,3 +74,7 @@ Product Routes:
 | GET | Products Index | /products | Getting All the available products in the data base | All Products |
 | GET | Produc Show | /product/:id | Getting a specific product with the required id | A Product |
 | POST | Product Create | /products | Create a new Product | A Product |
+
+**DataBase Schema** : 
+
+![dbSchema.png](dbSchema.png)
