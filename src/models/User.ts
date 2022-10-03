@@ -1,6 +1,7 @@
 import client from "../database";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import { Order } from "./Order";
 
 dotenv.config();
 
@@ -51,6 +52,19 @@ export class ShopUser {
       conn.release();
       const user = res.rows[0];
       return user;
+    } catch (err) {
+      throw new Error(`Something Went Wrong ${err}`);
+    }
+  }
+
+  async userOrders(userId: string): Promise<Order[]> {
+    try {
+      const sql = "SELECT * FROM orders WHERE user_id = ($1)";
+      const conn = await client.connect();
+      const result = await conn.query(sql, [userId]);
+      const orders = result.rows;
+      conn.release();
+      return orders;
     } catch (err) {
       throw new Error(`Something Went Wrong ${err}`);
     }
