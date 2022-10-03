@@ -1,6 +1,6 @@
-CREATE TYPE Status AS ENUM ('completed', 'inProgress', 'closed');
+CREATE TYPE StatusENUM AS ENUM ('completed', 'inProgress', 'closed');
 CREATE TABLE orders (
     id SERIAl PRIMARY KEY,
-    status Status,
+    status StatusENUM,
     user_id BIGINT REFERENCES users(id)
 );
