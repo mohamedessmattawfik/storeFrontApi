@@ -69,4 +69,15 @@ export class ShopUser {
       throw new Error(`Something Went Wrong ${err}`);
     }
   }
+
+  async delete(userId: string): Promise<void> {
+    try {
+      const sql = "DELETE FROM users WHERE id = ($1)";
+      const conn = await client.connect();
+      const result = await conn.query(sql, [userId]);
+      conn.release();
+    } catch (err) {
+      throw new Error(`Something Went Wrong ${err}`);
+    }
+  }
 }
