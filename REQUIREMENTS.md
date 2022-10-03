@@ -77,4 +77,46 @@ Product Routes:
 
 **DataBase Schema** : 
 
+ERD : 
 ![dbSchema.png](dbSchema.png)
+
+Database Schemas :
+
+#### Users
+
+| Field    | Type             | Special Attributes |
+| -------- | ---------------- | ------------------ |
+| **id**   | **Serial**       | **Primary Key**    |
+| **firstname** | **VarChar(50)** | **N/A**        |
+| **lastname** | **VarChar(50)** | **N/A**        |
+| **password** | **VarChar** | **N/A**        |
+
+
+#### Orders
+
+| Field    | Type             | Special Attributes |
+| -------- | ---------------- | ------------------ |
+| **id**   | **Serial**       | **Primary Key**    |
+| **status** | **ENUM**       | **N/A**            |
+| **user_id** | **BIGINT**       | **Foreign Key** |
+
+
+#### Products
+
+| Field     | Type             | Special Attributes |
+| --------- | ---------------- | ------------------ |
+| **id**    | **Serial**       | **Primary Key**    |
+| **name**  | **VARCHAR (100)** | **N/A**            |
+| **price** | **Integer** | **N/A**            |
+| **category** | **VARCHAR (50)**      | **N/A**  |
+
+#### Order_Products
+
+| Field          | Type        | Special Attributes |
+| -------------- | ----------- | ------------------ |
+| **id**         | **Serial**  | **Primary Key**    |
+| **order_id** | **BIGINT** | **Foreign Key**      |
+| **product_id** | **BIGINT** | **Foreign Key**    |
+| **quantity** | **BIGINT** |          **N/A**    |
+
+
