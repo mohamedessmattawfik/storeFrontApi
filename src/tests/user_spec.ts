@@ -25,7 +25,7 @@ describe("User Model", () => {
       lastname: "testUserLastName",
       password: "testPassword",
     });
-    expect(Number(result.id)).toEqual(1);
+    expect(Number(result.id)).toEqual(2);
     expect(result.firstname).toEqual("testUser");
     expect(result.lastname).toEqual("testUserLastName");
     expect(
