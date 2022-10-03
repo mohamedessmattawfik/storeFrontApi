@@ -66,3 +66,15 @@ In order to run all tests run:
 ```node
 yarn test
 ```
+
+Enviroment Variables : 
+
+POSTGRES_HOST = 127.0.0.1
+POSTGRES_DB = storefront
+POSTGRES_TEST_DB=storefront_test
+POSTGRES_USER = shop_owner
+POSTGRES_PASSWORD = root
+BCRYPT_PASSWORD=secretPassword
+SALT_ROUNDS=10
+TOKEN_SECRET=aloha123
+ENV=dev
