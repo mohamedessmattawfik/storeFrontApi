@@ -5,7 +5,7 @@ import auth from "../../middlewares/auth";
 const userRoutes = Router();
 
 userRoutes.post("/", create);
-userRoutes.get("/", index);
+userRoutes.get("/", auth, index);
 userRoutes.get("/:id", auth, show);
 
 export default userRoutes;
