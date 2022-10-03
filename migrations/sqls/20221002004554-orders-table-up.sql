@@ -1,5 +1,5 @@
 CREATE TABLE orders (
     id SERIAl PRIMARY KEY,
-    status VARCHAR(50),
+    status ENUM('completed', 'inProgress') DEFAULT 'inProgress',
     user_id BIGINT REFERENCES users(id),
 );
