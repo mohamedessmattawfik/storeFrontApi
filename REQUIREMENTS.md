@@ -40,3 +40,37 @@ These are the notes from a meeting with the frontend developer that describe wha
 - user_id
 - status of order (active or complete)
 
+# Api Documenation
+
+User Routes: 
+
+| Method | Route | URL | Description | Return |
+| --- | --- | --- | --- | --- |
+| GET | Users Index | /users | Getting All the available users in the data base | All Users |
+| GET | Users Show | /users/:id | Getting a specific user with the required id | A user |
+| GET | User’s Orders | /users/:id/orders | Getting all the orders made by a specific user with the required id | Orders |
+| POST | Users Create | /users | Creating a User with the required information passed through the request body | A User |
+
+
+Order Routes: 
+
+
+
+| Method | Route | URL | Description | Return |
+| --- | --- | --- | --- | --- |
+| GET | Orders Index | /orders | Getting All the available orders in the data base | All Orders |
+| GET | Orders Show | /order/:id | Getting a specific order with the required id | An Order |
+| GET | Order Products | /orders/:id/products | Getting products of a specific order using the required id | List of products |
+| POST | Users Create | /orders | Create a new Order | An Order |
+
+
+
+Product Routes: 
+
+
+
+| Method | Route | URL | Description | Return |
+| --- | --- | --- | --- | --- |
+| GET | Products Index | /products | Getting All the available products in the data base | All Products |
+| GET | Produc Show | /product/:id | Getting a specific product with the required id | A Product |
+| POST | Product Create | /products | Create a new Product | A Product |
