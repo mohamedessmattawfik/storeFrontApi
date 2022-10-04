@@ -7,7 +7,7 @@ dotenv.config();
 const auth = (req: Request, res: Response, next: NextFunction): void => {
   const authHeader = req.headers.authorization;
   if (authHeader === undefined) {
-    res.status(404);
+    res.status(401);
     res.json({
       message: "Invalid Token",
     });
