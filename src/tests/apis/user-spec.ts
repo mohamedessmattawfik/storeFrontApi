@@ -4,7 +4,6 @@ import app from "../../server";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
-import client from "../../database";
 
 dotenv.config();
 const request = supertest(app);
