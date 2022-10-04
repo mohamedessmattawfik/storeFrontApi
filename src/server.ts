@@ -6,8 +6,12 @@ import cors from "cors";
 const app: express.Application = express();
 const port: string = "3000";
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(bodyParser.json());
-app.use(cors);
 app.get("/", function (req: Request, res: Response) {
   res.send("Hello World!");
 });
