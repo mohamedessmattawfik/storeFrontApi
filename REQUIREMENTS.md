@@ -62,6 +62,7 @@ Order Routes:
 | GET | Orders Show | /order/:id | Getting a specific order with the required id | An Order |
 | GET | Order Products | /orders/:id/products | Getting products of a specific order using the required id | List of products |
 | POST | Users Create | /orders | Create a new Order | An Order |
+| POST | Add Product  |/orders/:id/products| Adds a new Product to an order | A Cart|
 
 
 
