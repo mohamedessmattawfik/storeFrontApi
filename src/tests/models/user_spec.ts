@@ -1,6 +1,7 @@
-import { ShopUser } from "../models/User";
+import { ShopUser } from "../../models/User";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import client from "../../database";
 
 dotenv.config();
 
@@ -22,12 +23,12 @@ describe("User Model", () => {
   it("create method should add a user and return a valid token", async (): Promise<void> => {
     const result = await shopUser.create({
       firstname: "testUser",
-      lastname: "testUserLastName",
+      lastname: "testUser",
       password: "testPassword",
     });
-    expect(Number(result.id)).toEqual(2);
+    expect(Number(result.id)).toEqual(3);
     expect(result.firstname).toEqual("testUser");
-    expect(result.lastname).toEqual("testUserLastName");
+    expect(result.lastname).toEqual("testUser");
     expect(
       bcrypt.compareSync(
         "testPassword" + process.env.BCRYPT_PASSWORD,
@@ -40,7 +41,7 @@ describe("User Model", () => {
     const result = await shopUser.index();
     expect(Number(result[0].id)).toEqual(1);
     expect(result[0].firstname).toEqual("testUser");
-    expect(result[0].lastname).toEqual("testUserLastName");
+    expect(result[0].lastname).toEqual("testUser");
     expect(
       bcrypt.compareSync(
         "testPassword" + process.env.BCRYPT_PASSWORD,
@@ -53,7 +54,7 @@ describe("User Model", () => {
     const result = await shopUser.show(id);
     expect(Number(result.id)).toEqual(Number(id));
     expect(result.firstname).toEqual("testUser");
-    expect(result.lastname).toEqual("testUserLastName");
+    expect(result.lastname).toEqual("testUser");
     expect(
       bcrypt.compareSync(
         "testPassword" + process.env.BCRYPT_PASSWORD,

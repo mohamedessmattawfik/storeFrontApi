@@ -1,4 +1,4 @@
-import { ProductStore } from "../models/Product";
+import { ProductStore } from "../../models/Product";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 
