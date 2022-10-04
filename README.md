@@ -38,6 +38,7 @@ CREATE DATABASE storefront_test;
 ```SQL
 GRANT ALL PRIVILEGES ON DATABASE storefront_test TO shop_owner;
 ```
+The Database is now running on `localhost` => `127.0.0.1` and on port `5432` which is the default port for postgres.
 ## App Setup :
 - install `yarn` :
 ```node
