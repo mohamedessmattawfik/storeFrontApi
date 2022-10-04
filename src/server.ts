@@ -21,3 +21,5 @@ app.use("/api", routes);
 app.listen(port, function () {
   console.log(`starting app on: ${port} 🚀🚀🚀`);
 });
+
+export default app;
