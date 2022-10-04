@@ -1,5 +1,6 @@
 import { Order, Cart } from "../models/Order";
 import { Request, Response } from "express";
+import { Product } from "../models/Product";
 
 const shoppingCart = new Cart();
 
@@ -46,6 +47,22 @@ export const orderProducts = async (
     const products = await shoppingCart.orderProducts(orderId);
     res.status(200);
     res.json(products);
+  } catch (err) {
+    res.status(400);
+    res.json(err);
+  }
+};
+
+export const addProduct = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { productId, quantity } = req.body;
+    const orderId = req.params.id;
+    const result = await shoppingCart.addProduct(productId, orderId, quantity);
+    res.status(201);
+    res.json(result);
   } catch (err) {
     res.status(400);
     res.json(err);
