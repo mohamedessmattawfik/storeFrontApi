@@ -75,7 +75,7 @@ describe("User Endpoints", () => {
       .expect(401);
   });
   it("should get orders for a specific user with a valid token for the correct user", async (): Promise<void> => {
-    const userId = 1;
+    const userId = 3;
     await request
       .get(`/api/users/${userId}/orders`)
       .set("authorization", `Bearer ${token}`)

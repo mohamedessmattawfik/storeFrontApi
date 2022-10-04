@@ -1,6 +1,5 @@
 import { ProductStore } from "../../models/Product";
 import dotenv from "dotenv";
-import bcrypt from "bcrypt";
 
 dotenv.config();
 
@@ -26,7 +25,7 @@ describe("Product Model", () => {
       category: "testCategory",
     });
     expect(result).toEqual({
-      id: 1,
+      id: 3,
       name: "testProduct",
       price: 150,
       category: "testCategory",
@@ -35,14 +34,12 @@ describe("Product Model", () => {
 
   it("index method should return all products available", async (): Promise<void> => {
     const result = await productStore.index();
-    expect(result).toEqual([
-      {
-        id: 1,
-        name: "testProduct",
-        price: 150,
-        category: "testCategory",
-      },
-    ]);
+    expect(result[0]).toEqual({
+      id: 1,
+      name: "testProduct",
+      price: 150,
+      category: "testCategory",
+    });
   });
 
   it("show method should return the correct product with the specified id", async (): Promise<void> => {
