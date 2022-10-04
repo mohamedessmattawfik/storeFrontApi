@@ -14,12 +14,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
   };
   try {
     const user = await shopUsers.create(u);
-    var token = jwt.sign(
-      {
-        user: user,
-      },
-      process.env.TOKEN_SECRET!
-    );
+    var token = jwt.sign(user, process.env.TOKEN_SECRET!);
     res.status(201);
     res.json({
       token: token,
@@ -45,7 +40,7 @@ export const show = async (req: Request, res: Response): Promise<void> => {
   try {
     const id = req.params.id;
     const user = await shopUsers.show(id);
-    res.status(202);
+    res.status(200);
     res.json(user);
   } catch (err) {
     res.status(400);
