@@ -18,6 +18,7 @@ const auth = (req: Request, res: Response, next: NextFunction): void => {
     jwt.verify(token, process.env.TOKEN_SECRET!);
     next();
   } catch (err) {
+    res.status(401);
     res.json({
       message: `Invalid Token ${err}`,
     });
